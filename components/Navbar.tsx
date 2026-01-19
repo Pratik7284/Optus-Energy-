@@ -1,6 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { NavItem } from '../types';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks: NavItem[] = [
+  const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
@@ -28,10 +28,10 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent border-b border-transparent'}`}>
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img
-            src={logoUrl}
-            alt="Optus Energy Logo"
-            className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
+          <img 
+            src={logoUrl} 
+            alt="Optus Energy Logo" 
+            className="h-10 md:h-12 w-auto object-contain transition-all duration-300" 
           />
         </Link>
 
