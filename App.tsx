@@ -17,21 +17,30 @@ const ScrollToTop = () => {
   return null;
 };
 
+const MainContent = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  return (
+    <main className={`flex-grow ${!isHome ? 'pt-20 md:pt-24' : ''}`}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/procedures" element={<Procedures />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </main>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <ScrollToTop />
         <Navbar />
-        <main className="flex-grow pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/procedures" element={<Procedures />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+        <MainContent />
         <Footer />
       </div>
     </Router>
